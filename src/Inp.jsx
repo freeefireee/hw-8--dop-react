@@ -20,22 +20,32 @@ const Inp = () => {
     localStorage.setItem('displayedValues', JSON.stringify(newValues));
   };
 
+  const handleClear = () => {
+    localStorage.removeItem('displayedValues');
+    setDisplayedValues([]);
+  };
+
   return (
     <div>
-        <div className="block-content">
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      
-      <button className="button-30" role="button" onClick={handleClick}>
-        add name
-      </button>
+      <div className="block-content">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        
+        <button className="button-30" role="button" onClick={handleClick}>
+          add name
+        </button>
+        <button className="button-89" role="button" onClick={handleClear}>
+          clear names
+        </button>
       </div>
-      <h2>{displayedValues.map((value, index) => (
-        <p key={index}>{value}</p>
-      ))}</h2>
+      <h2>
+        {displayedValues.map((value, index) => (
+          <p key={index}>{value}</p>
+        ))}
+      </h2>
     </div>
   );
 };
